@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid row">
+
+  <div class="col-lg-12">
+    <div class="row my-5">
+
+      <div class="col-lg-9">
+        <h1>{{ data.title }}</h1>
+        <img src="/media/{{ data.image }}" style="height: 80vh; object-fit: cover;" class="img-fluid w-100" alt="">
+        <small class='text-danger'>{{ data.cate }}</small>
+        <small class='text-success'>{{ data.publish }}</small>
+        <p>{{ data.desc }}</p>
+        <a href="{% url 'home' %}" class='btn btn-primary'>Back Home</a>
+      </div>
+
+      <div class="col-lg-3">
+        {% for i in news %}
+          <a href="{% url 'detail' i.id %}" class="text-decoration-none text-dark">
+            <div class="row my-3">
+              <div class="col-lg-4">
+                <img src="/media/{{ i.image }}" class="img-fluid" alt="">
+              </div>
+              <div class="col">
+                <h4 class="fs-6">{{ i.title|truncatewords:6 }}</h4>
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- Comments  -->
+<div class="container my-5">
+  <h4>🗣️ Comments</h4>
+  {% for comment in comments %}
+    <div class="card my-2">
+      <div class="card-body">
+        <h6>{{ comment.name }}</h6>
+        <p>{{ comment.content }}</p>
+        <small class="text-muted">{{ comment.created_at }}</small>
+      </div>
+    </div>
+  {% empty %}
+    <p>No comments yet.</p>
+  {% endfor %}
+</div>
+
+<!-- Comment Form -->
+<div class="container mb-5">
+  <div class="card shadow-sm p-4">
+    <h4 class="mb-4 text-danger">📝 Leave a Comment</h4>
+
+    <form method="POST">
+      {% csrf_token %}
+
+      <div class="mb-3">
+        {{ form.name.label_tag }}
+        {{ form.name }}
+      </div>
+
+      <div class="mb-3">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+      </div>
+
+      <div class="mb-3">
+        {{ form.content.label_tag }}
+        {{ form.content }}
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">📤 Submit Comment</button>
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

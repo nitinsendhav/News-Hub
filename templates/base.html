@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>News Hub</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"/>
+      <link rel="stylesheet" href="/static/css/style.css">
+      
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+       <link rel="icon" href="\static\image\logo.png" type="image/png">
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+       
+
+</head>
+<body>
+  
+      <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="date-time">
+                        <i class="far fa-calendar-alt me-2"></i>
+                        <span id="current-date"></span>
+                        <i class="far fa-clock ms-3 me-2"></i>
+                        <span id="current-time"></span>
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/_thakur_nit_patel_?igsh=c2Vob3BqNnY5OTc4"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.linkedin.com/in/nitin-thakur-web"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">News<span>Hub</span></a>
+        <button class="navbar-toggler text-danger" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"><i class="fa-solid fa-sliders"></i></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'india' %}">India News</a>
+                  
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'bollywood' %}">Bollywood News</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'sport' %}">Sport News</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'online' %}">Online Gaming News</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">Contact</a>
+                </li>
+
+            </ul>
+            <div class="d-flex">
+                <form action="{% url 'search' %}" method="get" class="d-flex">
+                    <input type="search" name="q" class="form-control me-2" placeholder="Search..." required />
+                    <button class="btn btn-outline-danger btn-sm" type="submit">
+                        <i class="fas fa-search me-1"></i> Search
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+  {% block content %}
+  
+  {% endblock content %}
+
+
+  <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h5>About Us</h5>
+                        <p class="text-light">NewsHub delivers accurate, timely news with integrity and depth, keeping you informed on global events that matter.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h5>Categories</h5>
+                        <ul>
+                            <li><a href="#">Politics</a></li>
+                            <li><a href="#">Business</a></li>
+                            <li><a href="#">Technology</a></li>
+                            <li><a href="#">Sports</a></li>
+                            <li><a href="#">Entertainment</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h5>Company</h5>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Advertise</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h5>Contact Info</h5>
+                        <ul class="text-light">
+                            <li><i class="fas fa-map-marker-alt me-2"></i> 123 News Street, Media City</li>
+                            <li><a href=""><i class="fas fa-phone me-2"></i> +91 7999840995</a></li>
+                            <li><a href=""><i class="fas fa-envelope me-2"></i> nthakur@gmail.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright text-center">
+                <p>&copy; 2025 NewsHub. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"
+  ></script>
+
+  <script src="/static/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<h2>Leave a Comment</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+
+<hr>
+
+<h2>All Comments</h2>
+{% for comment in comments %}
+    <p><strong>{{ comment.name }}</strong> ({{ comment.email }})</p>
+    <p>{{ comment.content }}</p>
+    <small>{{ comment.created_at }}</small>
+    <hr>
+{% endfor %}
